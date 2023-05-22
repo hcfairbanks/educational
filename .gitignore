@@ -1,0 +1,18 @@
+# Mono
+todo
+
+
+# Front End
+/frontend/log/*
+/frontend/tmp/*
+/frontend/node_modules
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/dist/
+
+# Backend
+/backend/log/*
+/backend/tmp/*
+/backend/config/master.key
+/backend/config/credentials.yml.enc
