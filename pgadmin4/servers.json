@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "docker-localhost",
+      "Group": "Servers",
+      "Host": "localhost",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "deploy",
+      "PassFile": "localhost:5432:backend_development:deploy:password",
+      "SSLMode": "prefer"
+    }
+  }
+}
