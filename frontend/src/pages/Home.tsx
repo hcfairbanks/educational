@@ -20,6 +20,7 @@ function Home() {
           <Col xs={12} md={2} lg={2}>
           </Col>
           <Col xs={12} md={8} lg={8}>
+            <h1 style={{display: 'flex', justifyContent: 'center'}}>This is the Home page</h1>
             <h1 style={{display: 'flex', justifyContent: 'center'}}>About React-Redux</h1>
             <div style={{display: 'flex', justifyContent: 'center'}}>
               <Button onClick={outputChangeHandler}>Click me</Button>
