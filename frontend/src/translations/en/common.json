@@ -1,0 +1,9 @@
+{
+  "welcome": {
+    "title": "Welcome to {{framework}}"
+  },
+  "user":{
+    "edit": "Edit User",
+    "new": "New User"
+  }
+}
