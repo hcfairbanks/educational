@@ -23,7 +23,7 @@ function Home() {
           </Col>
           <Col xs={12} md={8} lg={8}>
             <h1>{t('welcome.title', {framework:'React'})}</h1>
-            <h1 style={{display: 'flex', justifyContent: 'center'}}>This is the</h1>
+            <h1 style={{display: 'flex', justifyContent: 'center'}}>This is a test</h1>
             <h1 style={{display: 'flex', justifyContent: 'center'}}>About React-Redux</h1>
             <div style={{display: 'flex', justifyContent: 'center'}}>
               <Button onClick={outputChangeHandler}>Click me</Button>

@@ -41,6 +41,20 @@ services:
     depends_on:
       - db
 
+  front-end:
+    build:
+      context: ./frontend
+    environment:
+      BASE_URL: localhost
+    restart: on-failure
+    command: sh -c "pnpm dev"
+    network_mode: "host"
+    volumes: # /local_dir /container_dir
+      - ./frontend:/frontend
+    depends_on:
+      - rails-api
+
+
 volumes:
   pgdata:
 
