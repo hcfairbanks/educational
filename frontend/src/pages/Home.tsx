@@ -1,11 +1,13 @@
-import React from 'react'
+//import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 import {useTranslation} from "react-i18next";
 
 function Home() {
-  const [t, i18n] = useTranslation('common');
-  const color = useSelector(state => state.examplesReducer.color);
+
+  const [t] = useTranslation('common');
+  // const color = useSelector(state => state.examplesReducer.color);
+  const color:any = useSelector((state: { examplesReducer: { color: any; }; }) => state.examplesReducer.color);
   const dispatch = useDispatch();
   
   async function outputChangeHandler(){
