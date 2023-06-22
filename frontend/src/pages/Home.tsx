@@ -6,17 +6,25 @@ import {useTranslation} from "react-i18next";
 function Home() {
 
   const [t] = useTranslation('common');
+  // https://github.com/i18next/next-i18next/issues/1917
   // const color = useSelector(state => state.examplesReducer.color);
-  const color:any = useSelector((state: { examplesReducer: { color: any; }; }) => state.examplesReducer.color);
+
+  type ColorState = {
+    examplesReducer: {
+      color: string
+    }
+  }
+  const colorSelection: any = useSelector((state: ColorState )=> state.examplesReducer);
   const dispatch = useDispatch();
-  
+
   async function outputChangeHandler(){
     await dispatch({
       type: "CHANGE_CAT_COLOR",
       value: "red"
     })
+      console.log(colorSelection)
   }
-  console.log(color)
+
   return (
     <div>
       <Container>
@@ -40,7 +48,7 @@ function Home() {
               />
            </div>
             <div style={{display: 'flex', justifyContent: 'center'}}>
-              {color}
+              {colorSelection.color}
             </div>
           </Col>
           <Col xs={12} md={2} lg={2}>
