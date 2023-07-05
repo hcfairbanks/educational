@@ -4,8 +4,8 @@
       "^.+\\.tsx?$": "ts-jest"
   },
   "setupFilesAfterEnv": [
-      "@testing-library/jest-dom/extend-expect",
-      "<rootDir>/setupTests.tsx"
+      "./jest.setup.ts",
+      "@testing-library/jest-dom/extend-expect"
   ],
   "types": ["node", "jest", "@testing-library/jest-dom"]
 }

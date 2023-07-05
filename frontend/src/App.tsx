@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Docs from './pages/Docs';
+import Users from './pages/Users';
 
 // https://www.youtube.com/watch?v=K_Qc_c6GH0g&ab_channel=0xVivek
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/about" element={<About />} />
         <Route path="/docs" element={<Docs />} />
+        <Route path="/users" element={<Users />}/>
       </Routes>
     </div>
     </Router>
