@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen,act } from '@testing-library/react';
 import Users from '../pages/Users'
 import axios from 'axios';
 import AxiosMock from 'axios-mock-adapter';
@@ -8,19 +8,25 @@ const axiosMock = new AxiosMock(axios);
 
 describe('<Users />', () => {
   test('should render text', async () => {
-    axiosMock.onGet('http://127.0.0.1:3000/users').reply(200, {
-      data:{
+    axiosMock.onGet('http://127.0.0.1:3000/users').reply(200, [
+      {
         id: 1,
         first_name: "bob",
-        last_name:"boberson"
+        last_name: "doug"
+      },
+      {
+        id: 2,
+        first_name: "joe",
+        last_name:"smith"
       }
-    });
+    ]);
 
-    render(<Users />);
+    //render(<Users />);
+    await act( async () => render(<Users/>));
     expect(await screen.getByText('Users Index')).not.toBeNull();
     expect(await screen.getByText('bob')).not.toBeNull();
     const users = await screen.findAllByRole('listitem');
-    expect(users).toHaveLength(14);
+    expect(users).toHaveLength(4);
 
     // const { getByText } = await renderComponent();
     // expect(getByText('Users Index')).not.toBeNull();
