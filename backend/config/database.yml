@@ -1,19 +1,19 @@
 default: &default
-  host:  <%= ENV["DB_HOSTNAME"] %>
+  host:  localhost
   adapter: postgresql
   encoding: utf8
   pool: 5
   timeout: 5000
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  username: deploy
+  password: password
 
 development:
   <<: *default
-  database: <%= ENV["DB_NAME"] %>
+  database: backend_development_not_docker
 
 test:
   <<: *default
-  database: <%= ENV["DB_NAME"] %>
+  database: backend_development_not_docker_test
 
 production:
   <<: *default
