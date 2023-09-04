@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :attributes
+  resources :permissions
   resources :roles
   resources :users do
     post 'login', action: 'login'

@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
+  #include JwtToken
+  #include
+  
   before_action :set_user, only: %i[ show update destroy ]
+  
 
   # GET /sessions
   def index
@@ -16,14 +20,20 @@ class SessionsController < ApplicationController
 
   # POST /sessions
   def create
-    # @user = User.new(user_params)
+    user = User.find_by(email: params[:email].downcase)
+    token = ""
+    message = "User failed to login"
 
-    # if @user.save
-    #   render json: @user, status: :created, location: @user
-    # else
-    #   render json: @user.errors, status: :unprocessable_entity
-    # end
-    render json: { session_id: 123455678, first_name: "bob" }
+    if user && user.authenticate(params[:password]) && user.activated && user.failed_logins < User::MAX_FAILED_LOGINS
+      token = JwtToken.jwt_encode({user_id: user.id})
+      message = SessionsConcern.log_in(user)
+      message = "User login success"
+      # SessionsConcern.remember(user)
+    elsif user.present? && user.activated
+      # failed_login(user)
+      # message = failed_login_message(user)
+    end
+    render json: { jwt: token, message: message }
   end
 
   # PATCH/PUT /sessions/1

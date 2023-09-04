@@ -1,9 +1,9 @@
-class AttributesController < ApplicationController
+class PermissionsController < ApplicationController
   before_action :set_attribute, only: %i[ show update destroy ]
 
   # GET /attributes
   def index
-    @attributes = Attribute.all
+    @attributes = Permission.all
 
     render json: @attributes
   end
@@ -15,7 +15,7 @@ class AttributesController < ApplicationController
 
   # POST /attributes
   def create
-    @attribute = Attribute.new(attribute_params)
+    @attribute = Permission.new(attribute_params)
 
     if @attribute.save
       render json: @attribute, status: :created, location: @attribute
@@ -41,7 +41,7 @@ class AttributesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_attribute
-      @attribute = Attribute.find(params[:id])
+      @attribute = Permission.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_005228) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_215305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attributes", force: :cascade do |t|
+  create_table "permissions", force: :cascade do |t|
     t.string "model"
     t.string "action"
-    t.boolean "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions_roles", id: false, force: :cascade do |t|
+    t.bigint "permission_id", null: false
+    t.bigint "role_id", null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -41,6 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_005228) do
     t.string "swipe_customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "users", "roles"
 end

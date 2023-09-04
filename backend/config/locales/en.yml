@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  user:
+    password_validation: "Minimum 8 and maximum 60 characters, at least one 
+                          uppercase letter, one lowercase letter, one number
+                          and one special character:"
