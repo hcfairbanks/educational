@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
+  resources :accounts
+  resources :account_types
   resources :permissions
   resources :roles
-  resources :users do
-    post 'login', action: 'login'
-  end
-
+  resources :users
   resources :sessions, only: [:create, :new, :destroy]
 
   # resources :users do

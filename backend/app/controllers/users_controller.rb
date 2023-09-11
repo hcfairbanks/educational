@@ -1,16 +1,11 @@
 class UsersController < ApplicationController
-  #before_action :set_user, only: %i[ show update destroy ]
-  #before_action :authenticate_user!, except: %i[index show]
+  before_action :set_user, only: %i[ show update destroy ]
+  #before_action :authenticate_user#!, except: %i[index show]
 
   # GET /users
   def index
     authorize User
-
-    debugger
-    @users = User.all
-
-   #render json: {"hello": "world"}
-   render json: @users
+    render json: User.all
   end
 
   # GET /users/1
@@ -40,17 +35,19 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    @user.destroy
+    if @user.destroy
+      render json: { message: I18n.t('user.destroyed') }
+    else
+      render json: @user.errors, status: :unprocessable_entity      
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role_id)
     end
 end

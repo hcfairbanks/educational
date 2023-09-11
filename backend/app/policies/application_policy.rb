@@ -36,6 +36,10 @@ class ApplicationPolicy
     false
   end
 
+  def basic_check(model, action)
+    user.role_id && user.role.permissions.where(model: model, action: action).first ? true : false
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

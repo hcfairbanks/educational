@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   # before_action :set_locale
-  include Pundit
+  include Pundit::Authorization
   # protect_from_forgery with: :exception
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # include SessionsConcern

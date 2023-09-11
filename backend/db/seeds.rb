@@ -16,6 +16,8 @@ user_permissions_admin = Permission.create(
   ]
 )
 
+puts "Created Admin Permissions"
+
 user_permissions_student = Permission.create(
   [
     {
@@ -28,6 +30,8 @@ user_permissions_student = Permission.create(
     }
   ]
 )
+
+puts "Created Student Permissions"
 
 roles = Role.create(
   [
@@ -46,6 +50,7 @@ roles = Role.create(
   ]
 )
 
+puts "Created Roles"
 # https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
 
 users = User.create([
@@ -59,21 +64,23 @@ users = User.create([
     role: Role.where(name: "admin").first
   },
   {
-    first_name: "Bob",
-    last_name: "Exampleson",
+    first_name: "Student",
+    last_name: "Example",
     password: "Password1!",
     password_confirmation: "Password1!",
-    email: "bexampleson@harryfairbanks.com",
+    email: "student@harryfairbanks.com",
     activated: true,
     role: Role.where(name: "student").first
   },
   {
-    first_name: "Joe",
-    last_name: "Exampleson",
+    first_name: "Teacher",
+    last_name: "Teacher",
     password: "Password1!",
     password_confirmation: "Password1!",
-    email: "jexampleson@harryfairbanks.com",
+    email: "teacher@harryfairbanks.com",
     activated: true,
     role: Role.where(name: "teacher").first
   }
 ])
+
+puts "Created Users"

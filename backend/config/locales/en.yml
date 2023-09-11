@@ -35,3 +35,4 @@ en:
     password_validation: "Minimum 8 and maximum 60 characters, at least one 
                           uppercase letter, one lowercase letter, one number
                           and one special character:"
+    destroyed: "User successfully deleted"
